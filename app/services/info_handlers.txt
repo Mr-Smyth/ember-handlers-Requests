@@ -1,0 +1,6 @@
+Handlers in this new architecture not only handle the request and response, 
+but they can also be responsible for pushing data into the store 
+(similar to how serializers did in the old architecture).
+
+Ensure that your UserNormalizePushHandler is registered as an Ember service. 
+This means you will create it as a service and then inject it where needed.

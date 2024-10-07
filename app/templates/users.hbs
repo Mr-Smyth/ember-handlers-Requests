@@ -1,0 +1,50 @@
+{{!-- app/templates/users.hbs --}}
+<div>
+  <h1>Users</h1>
+  {{#if this.model.length}}
+    <ul>
+      {{#each this.model as |user|}}
+        <li>
+          <div>
+            <strong>{{user.first_name}} {{user.last_name}}</strong> - {{user.description}}
+          </div>
+          <div>
+            <button type="button" {{on "click" (fn this.showEditUser user)}}>Edit</button>
+            <button type="button" {{on "click" (fn this.deleteUser user.id)}}>Delete</button>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No users found.</p>
+  {{/if}}
+</div>
+
+<div>
+  <h1>Create Users</h1>
+  <form {{on "submit" this.addUser}}>
+    <label for="firstName">First Name</label>
+    <input id="firstName" name="firstName" required type="text" value={{this.newUser.firstName}}>
+    
+    <label for="lastName">Last Name</label>
+    <input id="lastName" name="lastName" required type="text" value={{this.newUser.lastName}}>
+    
+    <label for="description">Description</label>
+    <input id="description" name="description" required type="text" value={{this.newUser.description}}>
+    
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+{{!-- Modal for Editing User --}}
+{{#if this.showEditModal}}
+  <div class="modal">
+    <div class="modal-dialog">
+      <UserEditModal 
+        @editUserData={{this.editUserData}} 
+        @onEditUser={{this.updateUser}} 
+        @onClose={{this.closeModal}} 
+      />
+    </div>
+  </div>
+{{/if}}

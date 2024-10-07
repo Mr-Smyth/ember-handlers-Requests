@@ -1,0 +1,3 @@
+RequestManager coordinates how handlers are invoked, 
+but it doesn’t perform the actual work of shaping or storing the data. 
+Handlers can handle both fetching and pushing data into the store.

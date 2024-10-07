@@ -1,0 +1,35 @@
+{{!-- app/components/user-edit-modal.hbs --}}
+<div class="modal-content">
+  <h2 class="modal-title">Edit User</h2>
+  <form {{on "submit" this.submitEdit}}>
+    <label for="editFirstName">First Name</label>
+    <input 
+      id="editFirstName" 
+      type="text" 
+      value={{this.firstName}} 
+      oninput={{action (fn this.handleInputChange "firstName") value="target.value"}} 
+      required
+    />
+
+    <label for="editLastName">Last Name</label>
+    <input 
+      id="editLastName" 
+      type="text" 
+      value={{this.lastName}} 
+      oninput={{action (fn this.handleInputChange "lastName") value="target.value"}} 
+      required
+    />
+
+    <label for="editDescription">Description</label>
+    <input 
+      id="editDescription" 
+      type="text" 
+      value={{this.description}} 
+      oninput={{action (fn this.handleInputChange "description") value="target.value"}} 
+      required
+    />
+
+    <button type="submit">Update</button>
+  </form>
+  <button class="close" {{on "click" this.close}}>Close</button> <!-- Trigger close action -->
+</div>
