@@ -82,8 +82,7 @@ export default class UsersController extends Controller {
         // Log a success message
         console.log('User deleted successfully.');
 
-        // Optionally, remove the user from the store to update the state
-        // This removes the user from the store
+        // Remove the user from the store to update the state - This removes the user from the store
         userToBeDeleted.unloadRecord();
       } catch (error) {
         // Log any error that occurs during deletion
@@ -97,9 +96,9 @@ export default class UsersController extends Controller {
   showEditUser(user) {
     // Fill the editUserData with the user’s details to be edited
     this.editUserData = {
-      firstName: user.first_name, // Set the first name
-      lastName: user.last_name, // Set the last name
-      description: user.description, // Set the description
+      firstName: user.first_name,
+      lastName: user.last_name,
+      description: user.description,
       id: user.id, // Store the user's ID
     };
 
@@ -115,8 +114,6 @@ export default class UsersController extends Controller {
   }
 
   // This action is triggered to update the user with new data
-  // app/controllers/users.js
-
   @action
   async updateUser(updatedUserData) {
     // Log the data we are using to update the user
